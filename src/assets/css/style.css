@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+  .hover-opacity {
+    @apply hover:opacity-70 transition-all ease-in-out duration-300
+  }
+  .router-link-exact-active {
+    @apply text-green no-underline
+  }
+
+  a {
+    @apply no-underline transition duration-300 text-gray
+  }
+}
