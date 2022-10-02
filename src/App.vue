@@ -22,7 +22,7 @@ export default {
           <RouterLink to="/about" class="hover:text-white" active-class="text-green font-medium">About</RouterLink>
         </nav>
       </div>
-      <div class="flex items-center space-x-1 hover:opacity-70 hover-opacity cursor-pointer">
+      <div class="flex items-center space-x-1.5 hover:opacity-70 hover-opacity cursor-pointer" @click="() => this.$router.push('/keranjang')">
         <h3 class="hidden md:block">Keranjang</h3>
         <i class="bi bi-cart3 text-lg"></i>
         <span class="bg-green text-white rounded text-xs w-4 h-4 flex items-center justify-center">2</span>
@@ -31,7 +31,7 @@ export default {
   
     <RouterView />
 
-    <footer class="border-t border-solid border-x-0 border-b-0 border-gray mt-auto w-full">
+    <footer class="border-t border-solid border-x-0 border-b-0 border-stone-700 mt-auto w-full">
       <!-- <hr /> -->
       <div class="max-w-desk w-full mx-auto px-5 flex justify-between items-center py-5 text-xs md:text-base">
         <p>{{new Date().getFullYear()}} Copyright Kulineran</p>

@@ -7,7 +7,10 @@
 
 @layer components {
   .hover-opacity {
-    @apply hover:opacity-70 transition-all ease-in-out duration-300
+    @apply hover:opacity-70 transition-all ease-in-out duration-500
+  }
+  .hover-anim {
+    @apply transition-all ease-in-out duration-500
   }
   .router-link-exact-active {
     @apply text-green no-underline
@@ -16,4 +19,19 @@
   a {
     @apply no-underline transition duration-300 text-gray
   }
+}
+
+.imgBox {
+  display: inline-block;
+  overflow: hidden !important;
+}
+
+.imgBox img {
+  transition: .3s ease-in-out;
+}
+
+.imgBox:hover img {
+  opacity: 0.6;
+  filter: alpha(opacity=30);
+  transform: scale(1.3);
 }
