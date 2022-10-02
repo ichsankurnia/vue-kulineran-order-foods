@@ -10,6 +10,7 @@
   "dependencies": {
     "bootstrap-vue": "^2.22.0",
     "vue": "^3.2.38",
+    "vue-lazyload": "^3.0.0-rc.2",
     "vue-router": "^4.1.5",
     "vue-toast-notification": "^0.6.3"
   },
