@@ -22,6 +22,20 @@ const router = createRouter({
       name: "Foods",
       component: () => import("../views/Foods.vue"),
     },
+    {
+      path: "/foods/:id",
+      name: "FoodDetail",
+      component: () => import("../views/FoodDetail.vue"),
+    },
+    {
+      path: "/charts",
+      name: "Charts",
+      component: () => import("../views/Charts.vue"),
+    },{
+      path: "/checkout",
+      name: "OderSuccess",
+      component: () => import("../views/OderSuccess.vue"),
+    },
     { 
       path: '/:pathMatch(.*)*', 
       name: 'PageNotFound',
