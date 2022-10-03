@@ -8,11 +8,11 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "bootstrap-vue": "^2.22.0",
+    "lodash": "^4.17.21",
     "vue": "^3.2.38",
     "vue-lazyload": "^3.0.0-rc.2",
     "vue-router": "^4.1.5",
-    "vue-toast-notification": "^0.6.3"
+    "vue-toast-notification": "3.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.4",
