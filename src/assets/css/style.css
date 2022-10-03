@@ -15,6 +15,12 @@
   .router-link-exact-active {
     @apply text-green no-underline
   }
+  .input-style {
+    @apply outline-none bg-transparent border border-gray rounded-lg text-white focus:border-green focus:ring-1 focus:ring-green transition-all ease-in-out duration-500
+  }
+  .btn-primary {
+    @apply bg-green text-white w-28 py-2 rounded-lg mt-3 hover-opacity flex justify-center items-center
+  }
 
   a {
     @apply no-underline transition duration-300 text-gray

@@ -4,10 +4,15 @@ import router from "./router";
 
 import "./assets/css/base.css";
 import "./assets/css/style.css";
-import VueLazyload from "vue-lazyload";
 
+import VueLazyload from "vue-lazyload";
 import loadImage from './assets/images/loader.gif'
 import errorImage from './assets/images/default.png'
+
+import ToastPlugin from 'vue-toast-notification';
+// Import one of the available themes
+//import 'vue-toast-notification/dist/theme-default.css';
+import 'vue-toast-notification/dist/theme-sugar.css';
 
 const app = createApp(App);
 
@@ -18,5 +23,7 @@ app.use(VueLazyload, {
     loading: loadImage,
     attempt: 1
 })
+
+app.use(ToastPlugin)
 
 app.mount("#app");
