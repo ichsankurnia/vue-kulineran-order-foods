@@ -3,10 +3,25 @@ import { RouterLink, RouterView } from "vue-router";
 import HelloWorld from "./components/HelloWorld.vue";
 
 export default {
+  data(){
+    return {
+      chartTotal: 0
+    }
+  },
   methods: {
     reloadPage(){
       window.location.href = '/'
+    },
+    async fetchChart(){
+      const res = await fetch('http://localhost:3004/keranjangs')
+      const data = await res.json()
+      if(res.ok){
+        this.chartTotal = data.length 
+      }
     }
+  },
+  mounted(){
+    this.fetchChart()
   }
 }
 
@@ -22,10 +37,10 @@ export default {
           <RouterLink to="/about" class="hover:text-white" active-class="text-green font-medium">About</RouterLink>
         </nav>
       </div>
-      <div class="flex items-center space-x-1.5 hover:opacity-70 hover-opacity cursor-pointer" @click="() => this.$router.push('/keranjang')">
+      <div class="flex items-center space-x-1.5 hover:opacity-70 hover-opacity cursor-pointer" @click="() => this.$router.push('/charts')">
         <h3 class="hidden md:block">Keranjang</h3>
         <i class="bi bi-cart3 text-lg"></i>
-        <span class="bg-green text-white rounded text-xs w-4 h-4 flex items-center justify-center">2</span>
+        <span class="bg-green text-white rounded text-xs w-4 h-4 flex items-center justify-center">{{chartTotal}}</span>
       </div>
     </header>
   

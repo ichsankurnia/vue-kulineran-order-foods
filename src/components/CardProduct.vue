@@ -9,7 +9,7 @@
 
 <template>
     <div>
-        <div class="imgBox w-full cursor-pointer" @click="() => this.$router.push('/foods' + product.id)">
+        <div class="imgBox w-full cursor-pointer" @click="() => this.$router.push('/foods/' + product.id)">
             <img v-lazy="product.gambar" alt="product.kode" class="rounded-t-2xl w-full h-52 md:h-[16.5rem] object-cover block" />
         </div>
         <div class="border border-t-0 rounded-b-2xl py-5 px-6 -mt-2">
