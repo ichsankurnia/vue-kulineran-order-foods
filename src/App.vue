@@ -1,54 +1,105 @@
-<script >
+<script setup >
 import { RouterLink, RouterView } from "vue-router";
+import { useDark, useToggle } from '@vueuse/core';
 import HelloWorld from "./components/HelloWorld.vue";
+import { store } from "./utils/store";
+import { onMounted, ref, watch } from "vue";
 
-export default {
-  data(){
-    return {
-      chartTotal: 0
-    }
-  },
-  methods: {
-    reloadPage(){
-      window.location.href = '/'
-    },
-    async fetchChart(){
-      const res = await fetch('http://localhost:3004/keranjangs')
-      const data = await res.json()
-      if(res.ok){
-        this.chartTotal = data.length 
-      }
-    }
-  },
-  mounted(){
-    this.fetchChart()
+const isDark = useDark()
+const toggleDark = useToggle(isDark)
+
+const chartTotal = ref(0)
+
+
+const fetchChart = async () => {
+  const res = await fetch('http://localhost:3004/keranjangs')
+  const data = await res.json()
+  
+  console.log("Fetching charts length :", data)
+  if (res.ok) {
+    chartTotal.value = data.length
   }
 }
+
+onMounted(() => {
+  fetchChart()
+})
+
+watch(()=> store.count, (newVal, oldVal) => {
+     console.log(newVal, oldVal);
+     fetchChart()
+ }, { deep: true });
+
+const reloadPage = () => {
+  window.location.href = '/'
+}
+
+// export default {
+//   data() {
+//     return {
+//       chartTotal: 0,
+//     }
+//   },
+//   methods: {
+//     reloadPage() {
+//       window.location.href = '/'
+//     },
+//     async fetchChart() {
+//       const res = await fetch('http://localhost:3004/keranjangs')
+//       const data = await res.json()
+
+//       console.log("Fetching charts length :", data)
+//       if (res.ok) {
+//         this.chartTotal = data.length
+//       }
+//     }
+//   },
+//   computed: {
+//     count() {
+//       return store.count
+//     }
+//   },
+//   mounted() {
+//     this.fetchChart()
+//   },
+//   watch: {
+//     count(newVal, oldVal) {
+//       this.fetchChart()
+//     }
+//   }
+// }
 
 </script>
 
 <template>
-  <div class="font-montserrat flex flex-col h-screen text-gray">
-    <header class="max-w-desk w-full mx-auto px-5 flex justify-between items-center py-2">
+  <div class="font-montserrat flex flex-col min-h-screen transition-all ease-in-out duration-500 text-darksoft dark:text-gray bg-light dark:bg-dark">
+    <header class="max-w-desk w-full mx-auto padding flex justify-between items-center py-3">
       <div class="flex items-end">
-        <h1 class="text-white font-medium text-3xl cursor-pointer hover-opacity" @click="reloadPage()">Kulineran</h1>
-        <nav class="ml-5 space-x-2 text-gray pb-0.5">
-          <RouterLink to="/" class="hover:text-white hover-opacity" active-class="text-green font-medium">Home</RouterLink>
-          <RouterLink to="/about" class="hover:text-white" active-class="text-green font-medium">About</RouterLink>
+        <h1 class="text-black dark:text-white font-medium text-3xl cursor-pointer hover-opacity" @click="reloadPage()">Kulineran</h1>
+        <nav class="ml-5 space-x-2 pb-0.5">
+          <RouterLink to="/" class="text-darksoft dark:text-gray hover:text-black dark:hover:text-white hover-opacity" active-class="text-green font-medium">Home
+          </RouterLink>
+          <RouterLink to="/about" class="text-darksoft dark:text-gray hover:text-black dark:hover:text-white" active-class="text-green font-medium">About</RouterLink>
         </nav>
       </div>
-      <div class="flex items-center space-x-1.5 hover:opacity-70 hover-opacity cursor-pointer" @click="() => this.$router.push('/charts')">
+      <div class="flex items-center space-x-1.5 hover:opacity-70 hover-opacity cursor-pointer"
+        @click="() => this.$router.push('/charts')">
         <h3 class="hidden md:block">Keranjang</h3>
         <i class="bi bi-cart3 text-lg"></i>
         <span class="bg-green text-white rounded text-xs w-4 h-4 flex items-center justify-center">{{chartTotal}}</span>
       </div>
     </header>
-  
+
     <RouterView />
 
-    <footer class="border-t border-solid border-x-0 border-b-0 border-stone-700 mt-auto w-full">
+    <button @click="toggleDark()" class="fixed bottom-10 md:bottom-20 right-8 md:left-6 2xl:left-20 w-10 h-10 flex justify-center items-center rounded-full shadow-lg text-gray dark:text-darksoft bg-darksoft dark:bg-light text-xl">
+      <i v-if="isDark" class="bi bi-sun-fill"></i>
+      <i v-else class="bi bi-moon-fill"></i>
+    </button>
+
+    <footer class="border-t-2 dark:border-t border-[#e0e0e0] dark:border-stone-700 mt-auto w-full">
       <!-- <hr /> -->
-      <div class="max-w-desk w-full mx-auto px-5 flex justify-between items-center py-5 text-xs md:text-base">
+      <div class="max-w-desk w-full mx-auto padding flex justify-between items-center py-5 text-xs md:text-base">
         <p>{{new Date().getFullYear()}} Copyright Kulineran</p>
         <p>Made by Vue & TailwindCSS</p>
       </div>
