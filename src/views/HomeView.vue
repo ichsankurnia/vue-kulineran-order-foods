@@ -24,7 +24,7 @@ export default {
 </script>
 
 <template>
-  <main class="max-w-desk w-full mx-auto px-5">
+  <main class="max-w-desk w-full mx-auto padding">
 
     <!-- HERO -->
     <div class="flex flex-col-reverse md:flex-row items-center justify-between">
@@ -42,7 +42,7 @@ export default {
     </div>
 
     <!-- Section -->
-    <section class="mt-10 mb-20">
+    <section class="mt-10 mb-14">
       <div class="flex justify-between items-center">
         <h2 class="text-xl md:text-3xl">Best <span class="font-semibold">Foods</span></h2>
         <RouterLink class="bg-green text-white px-4 py-2.5 rounded-lg hover-opacity" to="/foods">
