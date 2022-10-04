@@ -8,6 +8,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@vueuse/core": "^9.3.0",
     "lodash": "^4.17.21",
     "vue": "^3.2.38",
     "vue-lazyload": "^3.0.0-rc.2",

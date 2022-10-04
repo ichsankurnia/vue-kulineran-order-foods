@@ -6,6 +6,9 @@
 
 
 @layer components {
+  .padding{
+    @apply px-5 xl:px-8 2xl:px-5
+  }
   .hover-opacity {
     @apply hover:opacity-70 transition-all ease-in-out duration-500
   }
@@ -16,7 +19,7 @@
     @apply text-green no-underline
   }
   .input-style {
-    @apply outline-none bg-transparent border border-gray rounded-lg text-white focus:border-green focus:ring-1 focus:ring-green transition-all ease-in-out duration-500
+    @apply outline-none rounded-lg bg-transparent border-[1.5px] dark:border border-[#d0d0d0] dark:border-gray text-black dark:text-white focus:border-green focus:ring-1 focus:ring-green dark:focus:border-green dark:focus:ring-1 dark:focus:ring-green transition-all ease-in-out duration-500
   }
   .btn-primary {
     @apply bg-green text-white w-28 py-2 rounded-lg mt-3 hover-opacity flex justify-center items-center
