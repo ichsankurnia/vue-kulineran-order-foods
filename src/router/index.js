@@ -33,8 +33,8 @@ const router = createRouter({
       component: () => import("../views/Charts.vue"),
     },{
       path: "/checkout",
-      name: "OderSuccess",
-      component: () => import("../views/OderSuccess.vue"),
+      name: "SuccessOrder",
+      component: () => import("../views/SuccessOrder.vue"),
     },
     { 
       path: '/:pathMatch(.*)*', 
