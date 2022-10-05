@@ -171,7 +171,7 @@ export default {
             </div>
 
             <div class="flex justify-end mt-8 md:mt-10 mb-14">
-                <form class="w-full md:w-[22.5rem] space-y-5" v-on:submit.prevent>
+                <form class="w-full md:w-[23rem] space-y-5" v-on:submit.prevent>
                     <div class="flex flex-col space-y-1">
                         <label>Nama</label>
                         <input class="input-style py-2 px-4" placeholder="Nama pemesan" v-model="form.nama" />

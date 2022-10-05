@@ -92,7 +92,7 @@ const reloadPage = () => {
 
     <RouterView />
 
-    <button @click="toggleDark()" class="fixed bottom-10 md:bottom-20 right-8 md:left-6 2xl:left-20 w-10 h-10 flex justify-center items-center rounded-full shadow-lg text-gray dark:text-darksoft bg-darksoft dark:bg-light text-xl">
+    <button @click="toggleDark()" class="fixed bottom-10 md:bottom-20 right-8 md:left-6 2xl:left-20 w-10 h-10 flex justify-center items-center rounded-full shadow-lg hover-opacity text-gray dark:text-darksoft bg-darksoft dark:bg-light text-xl">
       <i v-if="isDark" class="bi bi-sun-fill"></i>
       <i v-else class="bi bi-moon-fill"></i>
     </button>
