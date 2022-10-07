@@ -1,6 +1,6 @@
 <script>
 import { useToast } from 'vue-toast-notification';
-import { store } from '../utils/store';
+import { store } from '../../utils/store';
 
 export const toast = useToast({
     position: 'bottom-left',

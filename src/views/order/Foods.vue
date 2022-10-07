@@ -1,5 +1,5 @@
 <script>
-import CardProduct from '../components/CardProduct.vue';
+import CardProduct from '../../components/CardProduct.vue';
 import { debounce } from 'lodash'
 
 export default {

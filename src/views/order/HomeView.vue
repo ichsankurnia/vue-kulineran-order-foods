@@ -1,7 +1,6 @@
 <script >
-import TheWelcome from '../components/TheWelcome.vue';
 import { RouterLink } from "vue-router";
-import CardProduct from '../components/CardProduct.vue';
+import CardProduct from '../../components/CardProduct.vue';
 
 export default {
     data() {
@@ -38,7 +37,7 @@ export default {
           <i class="bi bi-arrow-right mr-2"></i>Pesan
         </RouterLink>
       </div>
-      <img alt="hero" src="../assets/images/hero.png" class="w-full md:w-5/12 my-5 md:my-0" />
+      <img alt="hero" src="../../assets/images/hero.png" class="w-full md:w-5/12 my-5 md:my-0" />
     </div>
 
     <!-- Section -->

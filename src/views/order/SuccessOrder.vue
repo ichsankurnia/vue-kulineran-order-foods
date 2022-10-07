@@ -1,5 +1,5 @@
 <script>
-    import checkout from '../assets/images/menunggu.png'
+    import checkout from '../../assets/images/menunggu.png'
     export default {
         name: "SuccessOrder",
         computed: {
