@@ -1,13 +1,25 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import HomeView from "../views/order/HomeView.vue";
+import TheWelcome from "../components/TheWelcome.vue";
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: "/",
-      name: "home",
-      component: HomeView,
+      path: "/dashboard",
+      redirect: "/dashboard/welcome",
+      component: () => import("../layouts/DashboardLayout.vue"),
+      children: [
+        {
+          path: "/dashboard/welcome",
+          component: TheWelcome,
+        },
+        {
+          path: ":pathMatch(.*)*",
+          component: () => import("../views/PageNotFound.vue"),
+        },
+      ]
     },
     {
       path: "/about",
@@ -18,23 +30,40 @@ const router = createRouter({
       component: () => import("../views/AboutView.vue"),
     },
     {
-      path: "/foods",
-      name: "Foods",
-      component: () => import("../views/Foods.vue"),
-    },
-    {
-      path: "/foods/:id",
-      name: "FoodDetail",
-      component: () => import("../views/FoodDetail.vue"),
-    },
-    {
-      path: "/charts",
-      name: "Charts",
-      component: () => import("../views/Charts.vue"),
-    },{
-      path: "/checkout",
-      name: "SuccessOrder",
-      component: () => import("../views/SuccessOrder.vue"),
+      path: "/",
+      component: () => import("../layouts/OrderLayout.vue"),
+      children: [
+        {
+          path: "/",
+          name: "Home",
+          component: HomeView,
+        },
+        {
+          path: "/foods",
+          name: "Foods",
+          component: () => import("../views/order/Foods.vue"),
+        },
+        {
+          path: "/foods/:id",
+          name: "FoodDetail",
+          component: () => import("../views/order/FoodDetail.vue"),
+        },
+        {
+          path: "/charts",
+          name: "Charts",
+          component: () => import("../views/order/Charts.vue"),
+        },
+        {
+          path: "/checkout",
+          name: "SuccessOrder",
+          component: () => import("../views/order/SuccessOrder.vue"),
+        },
+        { 
+          path: ':pathMatch(.*)*', 
+          name: 'PageNotFound',
+          component: () => import("../views/PageNotFound.vue"),
+        },
+      ]
     },
     { 
       path: '/:pathMatch(.*)*', 
