@@ -1,9 +1,14 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import UserDropdown from './dropdowns/UserDropdown.vue';
+import { DASHBOARD_ROUTES } from '../utils/routePage'
 
 const sidebarOpen = ref(false)
 const sidebar = ref(null)
+
+onMounted(() => {
+    console.log(DASHBOARD_ROUTES)
+})
 
 const reloadPage = () => {
     window.location.href = '/'
@@ -39,42 +44,26 @@ const reloadPage = () => {
         </div>
 
         <div id="sidebar" ref="sidebar"
-            class="absolute left-0 top-0 z-10 lg:static lg:left-auto lg:top-auto h-screen bg-light lg:translate-x-0 transform transition-all duration-[600ms] ease-in-out w-64 2xl:w-72"
+            class="absolute left-0 top-0 z-10 lg:static lg:left-auto lg:top-auto h-screen bg-white text-dark lg:translate-x-0 transform transition-all duration-[600ms] ease-in-out w-64 2xl:w-72"
             :class="sidebarOpen ? 'translate-x-0' : '-translate-x-64'">
             <div class="overflow-y-auto overflow-x-hidden h-full flex flex-col text-left">
-                <h1 class="cursor-pointer" @click="reloadPage">Apps Name</h1>
+                <h1 class="cursor-pointer font-bold text-3xl 2xl:text-4xl text-center border-b border-gray py-7 2xl:py-8" @click="reloadPage">Food<span class="font-normal">Order</span></h1>
                 <div class="relative inline-flex lg:hidden my-5">
                     <i class="bi bi-search absolute left-3.5 top-2 text-[#999]"></i>
                     <input class="input-style py-2 px-9 text-sm" placeholder="Search anything.." />
                 </div>
-                <ul class="w-full flex-flex-col space-y-10">
-                    <li>Menu name</li>
-                    <li>Menu name</li>
-                    <li>Menu name</li>
-                    <li>Menu name</li>
-                    <li>Menu name</li>
-                    <li>Menu name</li>
-                    <li>Menu name</li>
-                    <li>Menu name</li>
-                    <li>Menu name</li>
-                    <li>Menu name</li>
-                    <li>Menu name</li>
-                    <li>Menu name</li>
-                    <li>Menu name</li>
-                    <li>Menu name</li>
-                    <li>Menu name</li>
-                    <li>Menu name</li>
-                    <li>Menu name</li>
-                    <li>Menu name</li>
-                    <li>Menu name</li>
-                    <li>Menu name</li>
-                    <li>Menu name</li>
-                    <li>Menu name</li>
-                    <li>Menu name</li>
-                    <li>Menu name</li>
-                    <li>Menu name</li>
-                    <li>Menu name</li>
-                    <li>Menu name</li>
+                <ul class="w-full flex flex-col space-y-5 md:mt-8">
+                    <RouterLink v-for="(item, key) in DASHBOARD_ROUTES" :key="key" :to="item.path"
+                        v-slot="{ href, route, navigate, isActive, isExactActive }"
+                    >
+                        <a :href="href" @click="navigate" class="flex items-center justify-between pl-5 2xl:pl-6 hover:font-semibold hover-anim" :class="[isActive? 'text-black font-semibold': 'text-slate-500']">
+                            <div class="flex items-center">
+                                <i class="w-8" :class="[item.icon, isActive&&'text-green']"></i>
+                                <p>{{item.name}}</p>
+                            </div>
+                            <div class="h-8 2xl:h-9 w-1 rounded-full" :class="[isActive?'bg-green':'bg-transparent']"></div>
+                        </a>
+                    </RouterLink>
                 </ul>
             </div>
         </div>
