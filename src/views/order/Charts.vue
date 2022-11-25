@@ -24,6 +24,7 @@ export default {
             if (res.ok) {
                 this.$toast.success("Berhasil menghapus makanan dari keranjang")
                 this.fetchChart()
+                store.increment()
             } else {
                 this.$toast.error(res.status + " " + res.statusText)
             }
