@@ -13,7 +13,8 @@ module.exports = {
         light: '#f5f5f5',
         green: '#00BD7E',
         primary: '#4EB883',
-        gray: '#EBEBEBA3'
+        gray: '#EBEBEBA3',
+        dashboardBg: '#F4F7FE'
       },
       fontFamily: {
         montserrat: ['Montserrat', 'sans-serif'],
