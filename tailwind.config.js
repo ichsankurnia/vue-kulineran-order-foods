@@ -24,6 +24,9 @@ module.exports = {
       },
       width: {
         desk: '1368px'
+      },
+      zIndex: {
+        full: 999999
       }
     },
   },

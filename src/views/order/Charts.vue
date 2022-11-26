@@ -175,11 +175,11 @@ export default {
                 <form class="w-full md:w-[23rem] space-y-5" v-on:submit.prevent>
                     <div class="flex flex-col space-y-1">
                         <label>Nama</label>
-                        <input class="input-style py-2 px-4" placeholder="Nama pemesan" v-model="form.nama" />
+                        <input class="input-style" placeholder="Nama pemesan" v-model="form.nama" />
                     </div>
                     <div class="flex flex-col space-y-1">
                         <label>Nomor Meja</label>
-                        <input type="number" class="input-style py-2 px-4" placeholder="Nomor meja pemesan"
+                        <input type="number" class="input-style" placeholder="Nomor meja pemesan"
                             v-model="form.nomor_meja" />
                     </div>
                     <button type="submit" class="btn-primary w-32 float-right" @click="checkOut">

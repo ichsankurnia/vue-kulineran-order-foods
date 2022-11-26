@@ -10,7 +10,7 @@
     @apply px-5 xl:px-8 2xl:px-5
   }
   .hover-opacity {
-    @apply hover:opacity-70 transition-all ease-in-out duration-500
+    @apply cursor-pointer hover:opacity-60 transition-all ease-in-out duration-300
   }
   .hover-anim {
     @apply transition-all ease-in-out duration-500
@@ -18,12 +18,28 @@
   .router-link-exact-active {
     @apply text-green no-underline
   }
+  .label-input {
+    @apply pb-1 font-medium
+  }
   .input-style {
-    @apply outline-none rounded-lg bg-transparent border-[1.5px] dark:border border-[#d0d0d0] dark:border-gray text-black dark:text-white focus:border-green focus:ring-1 focus:ring-green dark:focus:border-green dark:focus:ring-1 dark:focus:ring-green transition-all ease-in-out duration-500
+    @apply w-full py-2.5 px-4 outline-none rounded-2xl bg-transparent border-[1.5px] dark:border border-[#d0d0d0] dark:border-gray text-black dark:text-white focus:border-green focus:ring-1 focus:ring-green dark:focus:border-green dark:focus:ring-1 dark:focus:ring-green transition-all ease-in-out duration-500
   }
   .btn-primary {
-    @apply bg-green text-white w-28 py-2 rounded-lg mt-3 hover-opacity flex justify-center items-center
+    @apply bg-green text-white w-full py-2.5 rounded-2xl hover-opacity flex justify-center items-center
   }
+
+  .modal-form {
+    @apply fixed w-full h-full top-0 left-0 flex items-center justify-center z-full
+  }
+
+  .modal-form-outside {
+      @apply absolute w-full h-full bg-slate-900 opacity-50
+  }
+
+  .modal-form-content {
+      @apply w-11/12 md:w-[62%] 2xl:w-6/12 text-white rounded-lg shadow bg-slate-800 z-50 overflow-y-auto overflow-x-hidden
+  }
+
 
   a {
     @apply no-underline transition duration-300 text-gray
