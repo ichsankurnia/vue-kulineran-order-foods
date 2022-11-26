@@ -4,6 +4,7 @@ import router from "./router";
 
 // import "./assets/css/base.css";
 import "./assets/css/style.css";
+import './assets/css/blobz.css'
 
 import VueLazyload from "vue-lazyload";
 import loadImage from './assets/images/loader.gif'
