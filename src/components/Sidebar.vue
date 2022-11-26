@@ -50,7 +50,8 @@ const reloadPage = () => {
                 <h1 class="cursor-pointer font-bold text-3xl 2xl:text-4xl text-center border-b border-gray py-7 2xl:py-8" @click="reloadPage">Food<span class="font-normal">Order</span></h1>
                 <div class="relative inline-flex lg:hidden my-5">
                     <i class="bi bi-search absolute left-3.5 top-2 text-[#999]"></i>
-                    <input class="input-style py-2 px-9 text-sm" placeholder="Search anything.." />
+                    <!-- <input class="input-style py-2 px-9 text-sm" placeholder="Search anything.." /> -->
+                    <input class="input-style border-none rounded-full bg-dashboardBg font-semibold py-2.5 px-10 text-sm" placeholder="Search.." />
                 </div>
                 <ul class="w-full flex flex-col space-y-5 md:mt-8">
                     <RouterLink v-for="(item, key) in DASHBOARD_ROUTES" :key="key" :to="item.path"
