@@ -33,7 +33,7 @@ export default {
           <br />in Your Gadget
         </h2>
         <p class="mt-3 mb-6">Ayo segera pilih dan pesan makanan favorit Anda</p>
-        <RouterLink class="bg-green text-white px-4 py-2.5 rounded-lg hover-opacity" to="/foods">
+        <RouterLink class="bg-greenCustom text-white px-4 py-2.5 rounded-lg hover-opacity" to="/foods">
           <i class="bi bi-arrow-right mr-2"></i>Pesan
         </RouterLink>
       </div>
@@ -44,7 +44,7 @@ export default {
     <section class="mt-10 mb-14">
       <div class="flex justify-between items-center">
         <h2 class="text-xl md:text-3xl">Best <span class="font-semibold">Foods</span></h2>
-        <RouterLink class="bg-green text-white px-4 py-2.5 rounded-lg hover-opacity" to="/foods">
+        <RouterLink class="bg-greenCustom text-white px-4 py-2.5 rounded-lg hover-opacity" to="/foods">
           <i class="bi bi-eye-fill mr-2"></i>Lihat Semua
         </RouterLink>
       </div>
@@ -57,7 +57,7 @@ export default {
           <div class="border border-t-0 rounded-b-2xl py-5 px-6">
             <h3 class="text-xl mb-1 font-medium">{{item.nama}}</h3>
             <p>Harga : Rp{{item.harga}}</p>
-            <button class="bg-green px-4 py-2 rounded-lg flex item-center mt-3 hover-opacity">
+            <button class="bg-greenCustom px-4 py-2 rounded-lg flex item-center mt-3 hover-opacity">
               <i class="bi bi-basket-fill mr-2"></i>
               <span>Pesan</span>
             </button>

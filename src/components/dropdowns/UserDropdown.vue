@@ -44,7 +44,7 @@ const reloadPage = () => {
             className="bg-white origin-top-left z-10 absolute top-full right-0 w-max mt-1 rounded-xl shadow-lg py-4 px-5 flex flex-col">
             <div ref="dropdown">
                 <div class="font-semibold">Hello, User Name</div>
-                <ul className='flex flex-col font-medium text-sm text-left border-t border-gray mt-2 pt-3 space-y-3.5'>
+                <ul className='flex flex-col font-medium text-sm text-left border-t border-grayCustom mt-2 pt-3 space-y-3.5'>
                     <li>Profile Settings</li>
                     <li class="text-rose-500 cursor-pointer hover-opacity" @click="reloadPage">Logout</li>
                 </ul>

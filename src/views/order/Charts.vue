@@ -99,7 +99,7 @@ export default {
                 </li>
                 <li>
                     <div class="flex items-center">
-                        <svg class="w-6 h-6 text-[#a0a0a0] dark:text-gray" fill="currentColor" viewBox="0 0 20 20"
+                        <svg class="w-6 h-6 text-[#a0a0a0] dark:text-grayCustom" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
                                 d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
@@ -112,7 +112,7 @@ export default {
                 </li>
                 <li aria-current="page">
                     <div class="flex items-center">
-                        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                        <svg class="w-6 h-6 text-grayCustom-400" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
                                 d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
@@ -129,13 +129,13 @@ export default {
         <div v-if="listCharts.length === 0" class="flex flex-col justify-center items-center h-[60vh]">
             <p>Oops.. Kamu belum menambahkan makanan ke dalam keranjang,</p>
             <p>Silakan tambahkan makanan favorit kamu terlebih dahulu <RouterLink to="/foods"
-                    class="text-green font-semibold cursor-pointer hover-opacity">disini.</RouterLink>
+                    class="text-greenCustom font-semibold cursor-pointer hover-opacity">disini.</RouterLink>
             </p>
         </div>
         <div v-else>
             <div className="overflow-x-auto mt-5">
                 <table class="w-max min-w-full">
-                    <thead class="border-y border-[#d0d0d0] dark:border-gray text-left">
+                    <thead class="border-y border-[#d0d0d0] dark:border-grayCustom text-left">
                         <tr>
                             <th class="py-3 w-14 text-center">#</th>
                             <th class="px-4">Foto</th>
@@ -148,7 +148,7 @@ export default {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(item, key) in listCharts" :key="key" class="border-b border-[#d0d0d0] dark:border-gray">
+                        <tr v-for="(item, key) in listCharts" :key="key" class="border-b border-[#d0d0d0] dark:border-grayCustom">
                             <td class="text-center font-semibold">{{key + 1}}</td>
                             <td class="px-4"><img v-lazy="item.product.gambar" alt="item.product.nama"
                                     class="w-40 md:w-64 rounded-r-3xl rounded-l-3xl  py-3" /></td>

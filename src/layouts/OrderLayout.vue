@@ -37,34 +37,34 @@ const reloadPage = () => {
     
 <template>
   <div
-    class="font-montserrat flex flex-col min-h-screen transition-all ease-in-out duration-500 text-darksoft dark:text-gray bg-light dark:bg-dark">
+    class="font-montserrat flex flex-col min-h-screen transition-all ease-in-out duration-500 text-darksoft dark:text-grayCustom bg-light dark:bg-dark">
     <header class="max-w-desk w-full mx-auto padding flex justify-between items-center py-3">
       <div class="flex items-end">
         <h1 class="text-black dark:text-white font-medium text-3xl cursor-pointer hover-opacity" @click="reloadPage()">
           Kulineran</h1>
         <nav class="ml-5 space-x-2 pb-0.5">
-          <RouterLink to="/" class="text-darksoft dark:text-gray hover:text-black dark:hover:text-white hover-opacity"
-            :exact-active-class="'text-green dark:text-green font-medium'">Home</RouterLink>
+          <RouterLink to="/" class="text-darksoft dark:text-grayCustom hover:text-black dark:hover:text-white hover-opacity"
+            :exact-active-class="'text-greenCustom dark:text-greenCustom font-medium'">Home</RouterLink>
           <RouterLink to="/foods"
-            class="text-darksoft dark:text-gray hover:text-black dark:hover:text-white hover-opacity"
-            :exact-active-class="'text-green dark:text-green font-medium'">Foods</RouterLink>
+            class="text-darksoft dark:text-grayCustom hover:text-black dark:hover:text-white hover-opacity"
+            :exact-active-class="'text-greenCustom dark:text-greenCustom font-medium'">Foods</RouterLink>
           <RouterLink to="/about"
-            class="hidden md:inline-flex text-darksoft dark:text-gray hover:text-black dark:hover:text-white"
-            :exact-active-class="'text-green dark:text-green font-medium'">About</RouterLink>
+            class="hidden md:inline-flex text-darksoft dark:text-grayCustom hover:text-black dark:hover:text-white"
+            :exact-active-class="'text-greenCustom dark:text-greenCustom font-medium'">About</RouterLink>
         </nav>
       </div>
       <div class="flex items-center space-x-1.5 hover:opacity-70 hover-opacity cursor-pointer"
         @click="() => this.$router.push('/charts')">
         <h3 class="hidden md:block">Keranjang</h3>
         <i class="bi bi-cart3 text-lg"></i>
-        <span class="bg-green text-white rounded text-xs w-4 h-4 flex items-center justify-center">{{chartTotal}}</span>
+        <span class="bg-greenCustom text-white rounded text-xs w-4 h-4 flex items-center justify-center">{{chartTotal}}</span>
       </div>
     </header>
 
     <RouterView />
 
     <button @click="toggleDark()"
-      class="fixed bottom-10 md:bottom-20 right-8 md:left-6 2xl:left-20 w-10 h-10 flex justify-center items-center rounded-full shadow-lg hover-opacity text-green dark:text-darksoft bg-darksoft dark:bg-light text-xl">
+      class="fixed bottom-10 md:bottom-20 right-8 md:left-6 2xl:left-20 w-10 h-10 flex justify-center items-center rounded-full shadow-lg hover-opacity text-greenCustom dark:text-darksoft bg-darksoft dark:bg-light text-xl">
       <i v-if="isDark" class="bi bi-sun-fill"></i>
       <i v-else class="bi bi-moon-fill"></i>
     </button>
