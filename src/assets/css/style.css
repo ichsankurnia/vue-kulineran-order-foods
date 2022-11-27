@@ -1,51 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap');
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-
-@layer components {
-  .padding{
-    @apply px-5 xl:px-8 2xl:px-5
-  }
-  .hover-opacity {
-    @apply cursor-pointer hover:opacity-60 transition-all ease-in-out duration-300
-  }
-  .hover-anim {
-    @apply transition-all ease-in-out duration-500
-  }
-  .router-link-exact-active {
-    @apply text-green no-underline
-  }
-  .label-input {
-    @apply pb-1 font-medium
-  }
-  .input-style {
-    @apply w-full py-2.5 px-4 outline-none rounded-2xl bg-transparent border-[1.5px] dark:border border-[#d0d0d0] dark:border-gray text-black dark:text-white focus:border-green focus:ring-1 focus:ring-green dark:focus:border-green dark:focus:ring-1 dark:focus:ring-green transition-all ease-in-out duration-500
-  }
-  .btn-primary {
-    @apply bg-green text-white w-full py-2.5 rounded-2xl hover-opacity flex justify-center items-center
-  }
-
-  .modal-form {
-    @apply fixed w-full h-full top-0 left-0 flex items-center justify-center z-full
-  }
-
-  .modal-form-outside {
-      @apply absolute w-full h-full bg-slate-900 opacity-50
-  }
-
-  .modal-form-content {
-      @apply w-11/12 md:w-[62%] 2xl:w-6/12 text-white rounded-lg shadow bg-slate-800 z-50 overflow-y-auto overflow-x-hidden
-  }
-
-
-  a {
-    @apply no-underline transition duration-300 text-gray
-  }
-}
-
 .imgBox {
   display: inline-block;
   overflow: hidden !important;
@@ -60,3 +12,95 @@
   filter: alpha(opacity=30);
   transform: scale(1.3);
 }
+
+
+/*** MODAL STYLE ***/
+@keyframes background-in {
+  0% {
+    scale: 0 0.005;
+  }
+
+  33% {
+    scale: 1 0.005;
+  }
+
+  66%,
+  100% {
+    scale: 1 1;
+  }
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1, 1);
+  background: rgba(0, 0, 0, 0.5);
+  transition: 0.5s;
+}
+
+.open.modal-background {
+  visibility: visible;
+  opacity: 1;
+  animation: background-in 1s both;
+}
+
+@keyframes modal-in {
+
+  0%,
+  66% {
+    opacity: 0;
+    visibility: hidden;
+    translate: -50% -30%;
+  }
+
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 91.6%;
+  background: #37353b;
+  color: #f9f9f9;
+  border-radius: 12px;
+  translate: -50% -50%;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+}
+
+.open.modal {
+  opacity: 1;
+  visibility: visible;
+  animation: modal-in 1s;
+}
+
+.closed.modal {
+  opacity: 0;
+  visibility: hidden;
+  translate: -50% -50%;
+}
+
+@media (min-width: 768px) {
+  .modal {
+    width: 62%;
+  }
+}
+
+@media (min-width: 1536px) {
+  .modal {
+      width: 50%;
+  }
+}
+/*** END MODAL STYLE  ***/

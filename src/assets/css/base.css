@@ -1,74 +1,51 @@
-/* color palette from <https://github.com/vuejs/theme> */
-:root {
-  --vt-c-white: #ffffff;
-  --vt-c-white-soft: #f8f8f8;
-  --vt-c-white-mute: #f2f2f2;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap');
 
-  --vt-c-black: #181818;
-  --vt-c-black-soft: #222222;
-  --vt-c-black-mute: #282828;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  --vt-c-indigo: #2c3e50;
 
-  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
-  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
-  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
-  --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
-
-  --vt-c-text-light-1: var(--vt-c-indigo);
-  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
-  --vt-c-text-dark-1: var(--vt-c-white);
-  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
-}
-
-/* semantic color variables for this project */
-:root {
-  --color-background: var(--vt-c-white);
-  --color-background-soft: var(--vt-c-white-soft);
-  --color-background-mute: var(--vt-c-white-mute);
-
-  --color-border: var(--vt-c-divider-light-2);
-  --color-border-hover: var(--vt-c-divider-light-1);
-
-  --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
-
-  --section-gap: 160px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
-
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
-
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
+@layer components {
+  .padding{
+    @apply px-5 xl:px-8 2xl:px-5
   }
-}
+  .hover-opacity {
+    @apply cursor-pointer hover:opacity-60 transition-all ease-in-out duration-300
+  }
+  .hover-anim {
+    @apply transition-all ease-in-out duration-500
+  }
+  .router-link-exact-active {
+    @apply text-greenCustom no-underline
+  }
+  .label-input {
+    @apply pb-0.5 2xl:pb-1 font-medium
+  }
+  .input-style {
+    @apply font-medium w-full py-2.5 px-4 outline-none rounded-lg bg-transparent border-[1.5px] dark:border border-[#d0d0d0] dark:border-grayCustom focus:border-greenCustom focus:ring-1 focus:ring-greenCustom dark:focus:border-greenCustom dark:focus:ring-1 dark:focus:ring-greenCustom transition-all ease-in-out duration-500
+  }
+  .btn-primary {
+    @apply bg-greenCustom text-white w-full py-2.5 rounded-lg hover-opacity flex justify-center items-center font-medium
+  }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  position: relative;
-  font-weight: normal;
-}
+  .btn-secondary {
+    @apply text-white w-full py-2.5 rounded-lg hover-opacity font-medium border border-transparent hover:border-gray-700
+  }
 
-body {
-  min-height: 100vh;
-  color: var(--color-text);
-  background: var(--color-background);
-  transition: color 0.5s, background-color 0.5s;
-  line-height: 1.6;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  font-size: 15px;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  .modal-form {
+    @apply fixed w-full h-full top-0 left-0 flex items-center justify-center z-full
+  }
+
+  .modal-form-outside {
+      @apply absolute w-full h-full bg-slate-900 opacity-50
+  }
+
+  .modal-form-content {
+      @apply w-11/12 md:w-[62%] 2xl:w-6/12 rounded-lg shadow z-50 overflow-y-auto overflow-x-hidden
+  }
+
+
+  a {
+    @apply no-underline transition duration-300 text-grayCustom
+  }
 }
