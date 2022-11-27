@@ -1,10 +1,35 @@
 <script setup>
 import bg from '../assets/images/blobz-bg.jpg'
+import { Form } from 'vee-validate';
+import {string, object} from 'yup';
+import InputWithValidate from '../components/inputs/InputWithValidate.vue'
+import { toast } from '../views/order/FoodDetail.vue';
+import { ref } from 'vue';
+import ModalFormUser from '../components/modals/ModalFormUser.vue';
+
+
+const isPassword = ref(true)
+const isModalOpen = ref(false)
+
+const schema = object({
+    username: string().required("This field is required"),
+    password: string().min(5).required("This field is required")
+})
+
+function onSubmit(values) {
+  alert(JSON.stringify(values, null, 2));
+}
+
+function onInvalidSubmit() {
+    toast.error('Invalid form')
+}
+
 </script>
 
 <template>
     <div class='w-full h-screen bg-cover font-montserrat overflow-hidden' :style="{ 'background-image': `url('${bg}')` }">
         <div class="grid grid-cols-1 lg:grid-cols-2">
+            
             <div class="bg-white text-dark font-medium flex justify-center h-screen overflow-y-auto">
                 <div class="w-full md:w-[90%] xl:w-[85%] 2xl:w-[65%] flex flex-col p-5">
                     <div class="flex item-center text-slate-500 mb-10 hover-opacity">
@@ -25,29 +50,51 @@ import bg from '../assets/images/blobz-bg.jpg'
                             <p class="bg-white w-16 -mt-3 text-center">or</p>
                         </div>
         
-                        <form class="my-10 space-y-5 2xl:space-y-7">
-                            <div>
-                                <label class="label-input text-dark">Username / Phone / Email</label>
-                                <input class="input-style" placeholder="admin or 0812xxx or user@mail.com" />
-                            </div>
-                            <div>
-                                <label class="label-input text-dark">Password</label>
-                                <input type="password" class="input-style" placeholder="Min. 5 characters" />
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <div class="flex">
-                                    <input name="rememberMe" id="rememberMe" type="checkbox" />
-                                    <label class="ml-2 cursor-pointer" for="rememberMe">Keep me logged in</label>
+                        <Form @submit="onSubmit" :validation-schema="schema" @invalid-submit="onInvalidSubmit">
+                            <div class="my-10 space-y-5 2xl:space-y-7">
+                                <!-- <Field name="username" v-slot="{ field }">
+                                    <label class="label-input text-dark">Username / Phone / Email</label>
+                                    <input class="input-style" v-bind="field" placeholder="admin or 0812xxx or user@mail.com" />
+                                    <ErrorMessage name="username" />
+                                </Field> -->
+                                <InputWithValidate 
+                                    name="username"
+                                    type="text"
+                                    label="Username / Phone / Email"
+                                    placeholder="admin or 0812xxx or user@mail.com"
+                                    validMessage="Nice to meet you!"
+                                />
+                                <InputWithValidate 
+                                    name="password"
+                                    :type="isPassword?'password':'text'"
+                                    label="Password"
+                                    placeholder="Min. 5 characters"
+                                    validMessage="Glad you remembered it!"
+                                    :onChangeType="()=>isPassword = !isPassword"
+                                />
+                                <!-- <div>
+                                    <label class="label-input text-dark">Username / Phone / Email</label>
+                                    <input class="input-style" placeholder="admin or 0812xxx or user@mail.com" />
+                                </div> -->
+                                <!-- <div>
+                                    <label class="label-input text-dark">Password</label>
+                                    <input type="password" class="input-style" placeholder="Min. 5 characters" />
+                                </div> -->
+                                <div class="flex justify-between items-center">
+                                    <div class="flex">
+                                        <input name="rememberMe" id="rememberMe" type="checkbox" />
+                                        <label class="ml-2 cursor-pointer" for="rememberMe">Keep me logged in</label>
+                                    </div>
+                                    <p class="text-greenCustom hover-opacity">Forgot password?</p>
                                 </div>
-                                <p class="text-green hover-opacity">Forgot password?</p>
+                                <button type="submit" class="btn-primary">Sign In</button>
+        
+                                <p>Not registered yet? <RouterLink class="text-greenCustom" to="sign-up">Create Account</RouterLink></p>
                             </div>
-                            <button type="submit" class="btn-primary">Sign In</button>
-    
-                            <p>Not registered yet? <RouterLink class="text-green" to="sign-up">Create Account</RouterLink></p>
-                        </form>
+                        </Form>
                     </div>
     
-
+                    <button class="btn-primary" @click="()=> isModalOpen=!isModalOpen">Open Modal</button>
                     <p class="mt-auto text-slate-500 text-xs md:text-sm 2xl:text-base">© {{new Date().getFullYear()}} FoodOrder. All Rights Reserved. Made by Ories</p>
                 </div>
             </div>
@@ -94,13 +141,15 @@ import bg from '../assets/images/blobz-bg.jpg'
                         <path d="M410.6 78.8c36 52.5 36.1 126 19.2 194C412.9 340.7 379 403 330 421.9c-49 19-113.1-5.3-178.6-34C85.8 359.2 18.7 326.1 3.5 276.4-11.7 226.7 25 160.3 71.7 105.3 118.3 50.3 174.8 6.8 239 .7c64.1-6 135.7 25.5 171.6 78.1z"></path>
                     </svg>
                 </div>
-                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 text-white w-96 text-center">
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white w-96 text-center">
                     <h1 class="text-6xl font-bold">Food<span class="font-normal">Order</span></h1>
                     <p class="font-medium">Find and eat your order directly on the spot</p>
                 </div>
             </div>
             
         </div>
+
+        <ModalFormUser v-if="isModalOpen" :onClose="()=>isModalOpen=false" />
     </div>
 
 </template>

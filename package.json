@@ -11,10 +11,12 @@
     "@headlessui/vue": "^1.7.3",
     "@vueuse/core": "^9.3.0",
     "lodash": "^4.17.21",
+    "vee-validate": "^4.7.3",
     "vue": "^3.2.38",
     "vue-lazyload": "^3.0.0-rc.2",
     "vue-router": "^4.1.5",
-    "vue-toast-notification": "3.0"
+    "vue-toast-notification": "3.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.4",
