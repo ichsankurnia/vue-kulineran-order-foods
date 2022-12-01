@@ -1,10 +1,10 @@
-<script setup>
+<script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import UserDropdown from './dropdowns/UserDropdown.vue';
 import { DASHBOARD_ROUTES } from '../utils/routePage'
 
-const sidebarOpen = ref(false)
-const sidebar = ref(null)
+const sidebarOpen = ref<boolean>(false)
+const sidebar = ref<any>(null)
 
 onMounted(() => {
     console.log(DASHBOARD_ROUTES)

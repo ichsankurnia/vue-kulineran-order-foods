@@ -16,6 +16,10 @@ const router = createRouter({
           component: TheWelcome,
         },
         {
+          path: "menu",
+          component: () => import("../views/dashboard/Menu.vue"),
+        },
+        {
           path: ":pathMatch(.*)*",
           component: () => import("../views/PageNotFound.vue"),
         },
