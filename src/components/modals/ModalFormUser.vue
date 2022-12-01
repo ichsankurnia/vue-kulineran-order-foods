@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { Form } from 'vee-validate';
-import { number, string, object, ref as yupRef } from 'yup';
-import { toast } from '../../views/order/FoodDetail.vue';
+import { string, object, ref as yupRef } from 'yup';
 import Modal from './Modal.vue';
 import InputWithValidate from '../inputs/InputWithValidate.vue';
 import SelectWithValidate from '../inputs/SelectWithValidate.vue';
+import toast from '../../utils/toast'
 
 interface Props {
     onClose: (e: MouseEvent) => void

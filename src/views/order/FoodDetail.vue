@@ -1,12 +1,6 @@
 <script>
-import { useToast } from 'vue-toast-notification';
 import { store } from '../../utils/store';
-
-export const toast = useToast({
-    position: 'bottom-left',
-    duration: 5000,
-    pauseOnHover: true,
-})
+import toast from '../../utils/toast';
 
 export default {
     name: 'FoodDetail',

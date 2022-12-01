@@ -3,9 +3,9 @@ import bg from '../assets/images/blobz-bg.jpg'
 import { Form } from 'vee-validate';
 import {string, object} from 'yup';
 import InputWithValidate from '../components/inputs/InputWithValidate.vue'
-import { toast } from '../views/order/FoodDetail.vue';
 import { ref } from 'vue';
 import ModalFormUser from '../components/modals/ModalFormUser.vue';
+import toast from '../utils/toast';
 
 
 const isPassword = ref(true)
