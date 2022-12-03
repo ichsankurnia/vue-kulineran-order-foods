@@ -41,7 +41,7 @@ const reloadPage = () => {
             enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100"
             leave="transition ease-in duration-100" leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
-            className="bg-white origin-top-left z-10 absolute top-full right-0 w-max mt-1 rounded-xl shadow-lg py-4 px-5 flex flex-col">
+            className="bg-white origin-top-left z-50 absolute top-full right-0 w-max mt-1 rounded-xl shadow-lg py-4 px-5 flex flex-col">
             <div ref="dropdown">
                 <div class="font-semibold">Hello, User Name</div>
                 <ul className='flex flex-col font-medium text-sm text-left border-t border-grayCustom mt-2 pt-3 space-y-3.5'>

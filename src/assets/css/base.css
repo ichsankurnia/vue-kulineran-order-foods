@@ -44,6 +44,26 @@
       @apply w-11/12 md:w-[62%] 2xl:w-6/12 rounded-lg shadow z-50 overflow-y-auto overflow-x-hidden
   }
 
+  .pagination {
+    @apply flex items-center space-x-3
+  }
+
+  .page-item a{
+    @apply hover-opacity
+  }
+
+  .page-link {
+    @apply text-dark font-medium
+  }
+
+  .page-item.active a{
+    @apply font-semibold text-white w-5 h-5 bg-greenCustom rounded-full flex justify-center items-center
+  }
+
+  .page-item.disabled a{
+    @apply text-gray-300
+  }
+
 
   a {
     @apply no-underline transition duration-300 text-grayCustom

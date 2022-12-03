@@ -10,6 +10,7 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.3",
     "@vueuse/core": "^9.3.0",
+    "dayjs": "^1.11.6",
     "lodash": "^4.17.21",
     "vee-validate": "^4.7.3",
     "vue": "^3.2.38",
