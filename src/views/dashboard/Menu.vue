@@ -5,8 +5,6 @@ import TableDefault, { ITableColumn } from '../../components/tables/TableDefault
 
 
 const dataTables = ref<any[]>([])
-const totalPages = ref<number>(1)
-const currentPage = ref<number>(1)
 const isFetching = ref<boolean>(true)
 
 const fetchData = async () => {
@@ -28,60 +26,59 @@ onMounted(() => {
     fetchData()
 })
 
-onUpdated(() => {
-    console.log(totalPages.value)
-})
-
-watch(() => currentPage.value, (newVal, oldVal) => {
-    console.log("Current page change =>", newVal, oldVal)
-})
+const handleEdit = (e: MouseEvent, row: any) => {
+    console.log(row)
+}
 
 const columns: ITableColumn[] = [
-        {
-            Header: "ID",
-            field: 'id',
-            width: 50,
-            Cell: ({row, value}) => {
-                return value
-            }
-        },
-        {
-            Header: 'Code',
-            field: 'kode',
-            width: 70,
-        },
-        {
-            Header: 'Name',
-            field: 'nama',
-            width: 200,
-        },
-        {
-            Header: 'Price',
-            field: 'harga',
-            width: 100,
-        },
-        {
-            Header: 'Date',
-            field: 'tanggal',
-            sortType: 'date',
-            width: 200,
-        },
-        {
-            Header: 'Thumbnail URL',
-            field: 'gambar',
-            sortType: 'length',
-            width: 900,
-        },
-        {
-            Header: 'Action',
-            field: 'action',
-            width: 200
+    {
+        Header: "No",
+        field: 'no',
+        Cell: ({ index }) => {
+            return index + 1
         }
-    ]
+    },
+    {
+        Header: "ID",
+        field: 'id',
+        width: 50,
+        Cell: ({ row, value }) => {
+            return value
+        }
+    },
+    {
+        Header: 'Code',
+        field: 'kode',
+        width: 70,
+    },
+    {
+        Header: 'Name',
+        field: 'nama',
+        width: 200,
+    },
+    {
+        Header: 'Price',
+        field: 'harga',
+        width: 100,
+    },
+    {
+        Header: 'Date',
+        field: 'tanggal',
+        sortType: 'date',
+        width: 200,
+    },
+    {
+        Header: 'Thumbnail URL',
+        field: 'gambar',
+        sortType: 'length',
+        width: 900,
+    }
+]
 </script>
 
 <template>
     <div class="p-6 2xl:p-8">
+
         <div class="bg-white rounded-2xl p-5 2xl:p-6">
             <div class="flex justify-between items-center mb-5">
                 <h2 class="font-semibold text-xl">Products</h2>
@@ -100,7 +97,15 @@ const columns: ITableColumn[] = [
                     </div>
                 </div>
             </div>
-            <TableDefault :colums="columns" :data-tables="dataTables" :is-fetching="isFetching" />
+            <TableDefault 
+                :colums="columns" :data-tables="dataTables" 
+                :is-fetching="isFetching" 
+                :action="{
+                    enable: true,
+                    onUpdate: handleEdit,
+                    onDelete: handleEdit,
+                }"
+            />
         </div>
     </div>
 </template>

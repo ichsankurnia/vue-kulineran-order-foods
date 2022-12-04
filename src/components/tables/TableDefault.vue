@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onUpdated, ref, watch } from 'vue';
 import Skeleton from '../Skeleton.vue';
 
 
@@ -13,10 +13,27 @@ export interface ITableColumn {
     sortType?: 'default' | 'length' | 'date'
 }
 
+export interface ITableAction {
+    enable: boolean,
+    width?: number,
+    onDetail?: (e: MouseEvent, row: any) => void
+    onChangePassword?: (e: MouseEvent, row: any) => void
+    onUpdateStatus?: (e: MouseEvent, row: any) => void
+    onUpdate?: (e: MouseEvent, row: any) => void
+    onDelete?: (e: MouseEvent, row: any) => void
+}
+
+enum SortOrder {
+    DESC = -1,
+    NONE = 0,
+    ASC = 1
+}
+
 interface Props {
     colums: ITableColumn[],
     dataTables: any[],
     isFetching: boolean,
+    action?: ITableAction
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -29,11 +46,14 @@ const totalPages = ref<number>(1)
 const pageSize = ref<number>(20)
 const currentPage = ref<number>(1)
 
-enum SortOrder {
-    DESC = -1,
-    NONE = 0,
-    ASC = 1
-}
+onUpdated(() => {
+    console.log("Total Pages:", totalPages.value)
+})
+
+watch(() => currentPage.value, (newVal: any, oldVal: any) => {
+    console.log("Current page change =>", newVal, oldVal)
+})
+
 
 const dateSort = (a: any, b: any, sortOrder: SortOrder, key: string) => {
     let date1 = new Date(a[key]).getTime();
@@ -70,19 +90,35 @@ const sortByLength = (row: any, key: string) => {
                         <VTh v-for="(header, key) in colums" :key="key" class="truncate py-2 px-1"
                             :sortKey="header.sortType === 'length' ? (row: any) => sortByLength(row, header.sortKey || header.field) : header.sortKey || header.field"
                             :customSort="header.sortType === 'date' ? (a: any, b: any, sort: SortOrder) => dateSort(a, b, sort, header.sortKey || header.field) : undefined"
-                            :style="{ 'width': `${header.width}px` || '50px' }"
-                        >
+                            :style="{ 'width': `${header?.width? header.width + 'px' : '50px'}` }">
                             {{ header.Header }}
                         </VTh>
+                        <th v-show="action?.enable? true : false" class="flex justify-center items-center py-3" :style="{ 'width': `${action?.width? action.width + 'px' : '100px'}` }">Action</th>
                     </tr>
                 </template>
                 <template #body="{ rows }">
-                    <VTr v-for="row in rows" :row="row" :key="row.id" v-slot="{ isSelected, toggle }">
+                    <VTr v-for="(row, index) in rows" :row="row" :key="row.id" v-slot="{ isSelected, toggle }">
                         <td>
                             <input type="checkbox" class="hover-opacity accent-greenCustom mr-2" :checked="isSelected" @change="toggle" />
                         </td>
-                        <td v-for="(cell, key) in colums" :key="key" :style="{ 'width': `${cell.width}px` || '50px' }" class="py-3 px-1" >
-                            {{ cell.Cell ? cell.Cell({ row: row, value: row[cell.field] }) : row[cell.field] }}
+                        <td v-for="(cell, key) in colums" :key="key" :style="{ 'width': `${cell?.width? cell.width + 'px' : '50px'}` }" class="py-3 px-1">
+                            {{ cell.Cell ? cell.Cell({ row: row, value: row[cell.field], index: index }) : row[cell.field] }}
+                        </td>
+                        <td v-show="action?.enable? true : false" class="flex justify-center items-center py-3" :style="{ 'width': `${action?.width? action.width + 'px' : '100px'}` }">
+                            <div class="flex items-center text-white space-x-3">
+                                <button v-show="action?.onDetail? true : false" class="w-8 h-8 flex justify-center items-center rounded-lg bg-violet-500 hover-opacity" @click="(e)=>action.onDetail(e, row)" >
+                                    <i class="fa-regular fa-pen-to-square"></i>
+                                </button>
+                                <button v-show="action?.onChangePassword? true : false" class="w-8 h-8 flex justify-center items-center rounded-lg bg-stone-500 hover-opacity" @click="(e)=>action.onChangePassword(e, row)" >
+                                    <i class="fa-regular fa-pen-to-square"></i>
+                                </button>
+                                <button v-show="action?.onUpdate? true : false" class="w-8 h-8 flex justify-center items-center rounded-lg bg-greenCustom hover-opacity" @click="(e)=>action.onUpdate(e, row)" >
+                                    <i class="fa-regular fa-pen-to-square"></i>
+                                </button>
+                                <button v-show="action?.onDelete? true : false" class="w-8 h-8 flex justify-center items-center rounded-lg bg-rose-500 hover-opacity" @click="(e)=>action.onDelete(e, row)">
+                                    <i class="fa-regular fa-trash-can"></i>
+                                </button>
+                            </div>
                         </td>
                     </VTr>
                 </template>
