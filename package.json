@@ -12,6 +12,7 @@
     "@vueuse/core": "^9.3.0",
     "dayjs": "^1.11.6",
     "lodash": "^4.17.21",
+    "typescript": "^4.9.3",
     "vee-validate": "^4.7.3",
     "vue": "^3.2.38",
     "vue-lazyload": "^3.0.0-rc.2",
